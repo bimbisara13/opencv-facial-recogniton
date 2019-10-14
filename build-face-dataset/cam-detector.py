@@ -15,9 +15,9 @@ from fastai.metrics import *
 from facenet_pytorch import InceptionResnetV1
 
 path = "/Users/Sai/Desktop/Facial-Recognition/build-face-dataset/"
-learn = load_learner(path, 'facenet.pkl')
+learn = load_learner(path, '3classes.pkl')
 
-classes = ['aaisha', 'anurag', 'ashish', 'bhavika', 'prershen', 'sam', 'simran']
+
 
 
 # construct the argument parser and parse the arguments

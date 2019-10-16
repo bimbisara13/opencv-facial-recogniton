@@ -54,6 +54,7 @@ while True:
 	# maintaining the aspect ratio), and then grab the image
 	# dimensions
 	frame = imutils.resize(frame, width=600)
+	frame = cv2.flip(frame,+1)
 	(h, w) = frame.shape[:2]
 
 	# construct a blob from the image

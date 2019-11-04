@@ -55,7 +55,7 @@ fps = FPS().start()
 while True:
 	# grab the frame from the threaded video stream
 	frame = vs.read()
-
+	
 	# resize the frame to have a width of 600 pixels (while
 	# maintaining the aspect ratio), and then grab the image
 	# dimensions

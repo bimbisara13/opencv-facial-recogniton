@@ -123,7 +123,7 @@ while True:
 
 	# update the FPS counter
 	fps.update()
-
+	
 	# show the output frame
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF

@@ -48,7 +48,6 @@ knownNames = []
 
 # initialize the total number of faces processed
 total = 0
-
 # loop over the image paths
 for (i, imagePath) in enumerate(imagePaths):
 	# extract the person name from the image path

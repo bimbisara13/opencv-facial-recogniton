@@ -27,7 +27,7 @@ protoPath = os.path.sep.join(["./face_detection_model", "deploy.prototxt"])
 modelPath = os.path.sep.join(["./face_detection_model",
 	"res10_300x300_ssd_iter_140000.caffemodel"])
 detector = cv2.dnn.readNetFromCaffe(protoPath, modelPath)
-darshan
+darshanpoop
 
 predictor_model = "./face_detection_model/shape_predictor_68_face_landmarks.dat"
 face_pose_predictor = dlib.shape_predictor(predictor_model)

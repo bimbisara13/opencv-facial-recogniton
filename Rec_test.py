@@ -99,27 +99,28 @@ while True:
 			# through our face embedding model to obtain the 128-d
 			# quantification of the face
 			try:
-				faceBlob = cv2.dnn.blobFromImage(alignedFace, 1.0 / 255,
-					(96, 96), (0, 0, 0), swapRB=True, crop=False)
+				faceBlob = cv2.dnn.blobFromImage(alignedFace, 1.0 / 255,(96, 96), (0, 0, 0), swapRB=True, crop=False)
+				embedder.setInput(faceBlob)
+				vec = embedder.forward()
+
+				# perform classification to recognize the face
+				preds = recognizer.predict_proba(vec)[0]
+				j = np.argmax(preds)
+				proba = preds[j]
+				name = le.classes_[j]
+
+				# draw the bounding box of the face along with the
+				# associated probability
+				text = "{}: {:.2f}%".format(name, proba * 100)
+				y = startY - 10 if startY - 10 > 10 else startY + 10
+				cv2.rectangle(frame, (startX, startY), (endX, endY),
+				(0, 0, 255), 2)
+				cv2.putText(frame, text, (startX, y),
+				cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
 			except:
 				pass
-			embedder.setInput(faceBlob)
-			vec = embedder.forward()
 
-			# perform classification to recognize the face
-			preds = recognizer.predict_proba(vec)[0]
-			j = np.argmax(preds)
-			proba = preds[j]
-			name = le.classes_[j]
-
-			# draw the bounding box of the face along with the
-			# associated probability
-			text = "{}: {:.2f}%".format(name, proba * 100)
-			y = startY - 10 if startY - 10 > 10 else startY + 10
-			cv2.rectangle(frame, (startX, startY), (endX, endY),
-				(0, 0, 255), 2)
-			cv2.putText(frame, text, (startX, y),
-				cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
+			
 
 	# update the FPS counter
 	fps.update()
